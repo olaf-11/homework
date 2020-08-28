@@ -10,14 +10,14 @@ public class OlegTask5_1 {
 
         name = br.readLine();
 
-        if (name.toLowerCase().equals("вася")) {
+        if (name.equalsIgnoreCase("вася")) {
             System.out.println("Привет!");
             System.out.println("Я тебя так долго ждал.");
         }
-        if (name.toLowerCase().equals("анастасия")) {
+        if (name.equalsIgnoreCase("анастасия")) {
             System.out.println("Я тебя так долго ждал.");
         }
-        if (!(name.toLowerCase().equals("вася") || name.toLowerCase().equals("анастасия"))) {
+        if (!(name.equalsIgnoreCase("вася") || name.equalsIgnoreCase("анастасия"))) {
             System.out.println("Добрый день, а вы кто?");
         }
     }
