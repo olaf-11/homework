@@ -1,23 +1,51 @@
+/*
+ * Олег Макиевский (группа MK-JC1-50-20)
+ * г. Минск, 2020
+ *
+ * Задание 5.1. (Тема: операторы)
+ * Операторы ветвления.
+ * Используя класс Scanner запросить у пользователя его имя.
+ * В данном задании у вас должно получиться 3 класса.
+ *
+ * Общее условие:
+ * 1. Если имя будет равно имени Вася тогда в консоль должно вывести сообщение "Привет!" на одной строке,
+ *    а на второй "Я тебя так долго ждал".
+ * 2. Если имя будет равно имени "Анастасия" тогда в консоль должно вывести сообщение
+ *    "Я тебя так долго ждал".
+ * 3. В случае если это будет другое имя то вывести сообщение "Добрый день, а вы кто?".
+ *
+ * Как это сделать:
+ * 5.1. Написать в отдельном классе в отдельном main код который будет выполнять общее условие
+ *      при помощи if
+ *
+ * ВНИМАНИЕ! В примерах if и else if для сравнения имён использовать код вида
+ *           Objects.equals("Имя1", "Имя2").
+ */
 package lesson02;
 
-import java.io.*;
+import java.util.Objects;
+import java.util.Scanner;
 
 public class OlegTask5_1 {
+
     /* Оператор ветвления if - else */
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String name;
+    public static void main(String[] args) {
+        Scanner scanIn = new Scanner(System.in);
+        System.out.print("Введите ваше имя: ");
+        String someName = scanIn.nextLine();
+        scanIn.close();
 
-        name = br.readLine();
+        String vasya = "вася";
+        String nastya = "анастасия";
 
-        if (name.equalsIgnoreCase("вася")) {
+        if (Objects.equals(someName.toLowerCase(), vasya)) {
             System.out.println("Привет!");
             System.out.println("Я тебя так долго ждал.");
         }
-        if (name.equalsIgnoreCase("анастасия")) {
+        if (Objects.equals(someName.toLowerCase(), nastya)) {
             System.out.println("Я тебя так долго ждал.");
         }
-        if (!(name.equalsIgnoreCase("вася") || name.equalsIgnoreCase("анастасия"))) {
+        if (!(Objects.equals(someName.toLowerCase(), vasya) || Objects.equals(someName.toLowerCase(), nastya))) {
             System.out.println("Добрый день, а вы кто?");
         }
     }
