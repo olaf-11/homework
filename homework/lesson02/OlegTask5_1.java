@@ -35,17 +35,19 @@ public class OlegTask5_1 {
         String someName = scanIn.nextLine();
         scanIn.close();
 
-        String vasya = "вася";
-        String nastya = "анастасия";
+        String bestFriend = "вася";
+        String girlFriend = "анастасия";
 
-        if (Objects.equals(someName.toLowerCase(), vasya)) {
+        boolean checkedBestFriend = Objects.equals(someName.toLowerCase(), bestFriend);
+        boolean checkedGirlFriend = Objects.equals(someName.toLowerCase(), girlFriend);
+
+        if (checkedBestFriend){
             System.out.println("Привет!");
+        }
+        if (checkedBestFriend || checkedGirlFriend){
             System.out.println("Я тебя так долго ждал.");
         }
-        if (Objects.equals(someName.toLowerCase(), nastya)) {
-            System.out.println("Я тебя так долго ждал.");
-        }
-        if (!(Objects.equals(someName.toLowerCase(), vasya) || Objects.equals(someName.toLowerCase(), nastya))) {
+        if (!(checkedBestFriend || checkedGirlFriend)) {
             System.out.println("Добрый день, а вы кто?");
         }
     }
