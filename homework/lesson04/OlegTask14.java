@@ -11,16 +11,17 @@ package lesson04;
 public class OlegTask14 {
     public static void main(String[] args) {
         long num = 1L;
-        long prenum = -1L;
+        double d = num;
 
-        while (num > 0){
-            prenum = num;
+        while (d < Long.MAX_VALUE){
             num *= 3;
+            d = num*3.0;
         }
+        long overNum = num * 3;
 
         System.out.printf("%nМаксимальное значение Long: %,d", Long.MAX_VALUE);
-        System.out.printf("%nЧисло до переполнения:      %,d", prenum);
-        System.out.printf("%nЧисло после переполнения:  %,d%n", num);
+        System.out.printf("%nЧисло до переполнения:      %,d", num);
+        System.out.printf("%nЧисло после переполнения:  %,d%n", overNum);
 
         // Вывод в консоль:
         // Максимальное значение Long: 9 223 372 036 854 775 807
