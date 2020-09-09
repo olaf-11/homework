@@ -18,8 +18,10 @@ public class OlegTask16 {
     public static void main(String[] args) throws IOException {
         String lineOfNumbers;
 
-        // В цикле ожидаем ввода цифр, пока юзер не введет
-        // набор чисел, удовлетворяющих условиям.
+        /*
+         * В цикле ожидаем ввода цифр, пока юзер не введет
+         * набор чисел, удовлетворяющих условиям.
+         */
         do{
             System.out.println("Введите набор цифр. ");
             System.out.println("(вводить только цифры, кроме нуля, без пробелов и др. знаков или букв!): ");
@@ -28,7 +30,7 @@ public class OlegTask16 {
             lineOfNumbers = br.readLine();
         } while(!isValidNumbers(lineOfNumbers));
 
-        // Переменная для перевода из char и int
+        // Переменная для перевода из char в int
         int num = Integer.parseInt("" + lineOfNumbers.charAt(0));
         System.out.print("\n" + num);
 

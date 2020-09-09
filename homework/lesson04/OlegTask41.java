@@ -35,7 +35,6 @@ public class OlegTask41 {
         System.out.println("\nПузырьковая сортировка ----------------------------------------------->");
         for (int i = 0; i < bArray.length; i++) {
             System.out.println("\nИсходный массив" + (i + 1) + "      -> " + Arrays.toString(bArray[i]));
-            // "Пузырьковая" сортировка
             bubbleSort(bArray[i]);
             System.out.println("Сортированный массив" + (i + 1) + " -> " + Arrays.toString(bArray[i]));
         }
@@ -51,7 +50,6 @@ public class OlegTask41 {
         System.out.println("Шейкерная сортировка ------------------------------------------------->");
         for (int i = 0; i < bArray.length; i++) {
             System.out.println("\nИсходный массив" + (i + 1) + "      -> " + Arrays.toString(bArray[i]));
-            // "Пузырьковая" сортировка
             shakerSort(bArray[i]);
             System.out.println("Сортированный массив" + (i + 1) + " -> " + Arrays.toString(bArray[i]));
         }

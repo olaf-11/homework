@@ -10,14 +10,18 @@ package lesson04;
 
 public class OlegTask11 {
     public static void main(String[] args) {
-        // Проверяю что массив аргуменотов не null,
-        // всего аргументов: 1,
-        // значение аргумента является числом (дополнительный метод) —
-        // это отдельная тема для дискуссии...
-        if (args != null && args.length == 1 && isNumberInt(args[0])){
+        /*
+         * Проверяю что массив аргументов не null,
+         * всего аргументов: 1,
+         * значение аргумента является целым положительным числом (дополнительный метод):
+         */
+        if (args != null && args.length == 1 && isNumberPositiveInt(args[0])){
             int maxNumber = Integer.parseInt(args[0]);
 
-            // Проверяю, чтобы число было диапазоне 2..20
+            /*
+             * Проверяю, чтобы число было в диапазоне 2..20,
+             * иначе результат может выйти за границу Long.MAX_VALUE
+             */
             if(maxNumber > 1 && maxNumber < 21){
                 long factorial = 1L;
 
@@ -26,7 +30,7 @@ public class OlegTask11 {
                     factorial *= i;
                     System.out.print(" * " + i);
                 }
-                System.out.println(" = " + factorial);
+                System.out.printf(" = %,d%n", factorial);
             } else {
                 System.out.println("Целое число должно быть из диапазона [2..20] включительно:");
             }
@@ -40,7 +44,7 @@ public class OlegTask11 {
      * @param str — проверяемая строка
      * @return true если все символы в строке будут только цифрами (0..9).
      */
-    public static boolean isNumberInt(String str) {
+    public static boolean isNumberPositiveInt(String str) {
         if (str == null || str.isEmpty()) {
             return false;
         }
