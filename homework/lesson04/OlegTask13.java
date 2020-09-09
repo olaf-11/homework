@@ -11,36 +11,71 @@
  */
 package lesson04;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class OlegTask13 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         double base = 0.0;
         int power = -1;
         double multi = 1.0;
 
         System.out.println("Вычислим степень числа.");
 
-        // XXXXXXX переделать Scanner для проверок строк RegExp int[\\d+] double[\\d+(,|.)\\d+]
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         while (true) {
-            System.out.println("Введите основание (не 0; вещественное число разделяйте запятой (,) ): ");
-            if (sc.hasNextDouble()){
-                base = sc.nextDouble();
+            System.out.println("Введите основание (любое вещественное число, не ноль): ");
+            String strNum = br.readLine();
+
+            Pattern pattern = Pattern.compile("(-?\\d+(,|\\.)\\d+)|(-?[0-9]+)");
+            Matcher mathch = pattern.matcher(strNum);
+
+            /*
+             * Проверяем, что строка содержит вещественное число.
+             * Если пользователь ввел запятую вместо точки, то меняем на точку.
+             * Замену делаю при помощи методов StringBuilder.
+             */
+            if (mathch.matches()) {
+                if (strNum.indexOf(',') > 0) {
+                    // Однопоточная прога, поэтому StringBuilder
+                    StringBuilder sb = new StringBuilder(strNum);
+                    base = Double.parseDouble(sb.replace(sb.indexOf(","), sb.indexOf(",") + 1, ".").toString());
+                } else {
+                    base = Double.parseDouble(strNum);
+                }
             }
-            if (base != 0.0) break;
+
+            if (base != 0.0) {
+                break;
+            } else {
+                System.out.println("Строка не является вещественным числом. " +
+                        "\nПопробуйте снова, например 2.5");
+            }
         }
 
         while (true) {
-            System.out.print("\nВведите степень числа (положительное целое число): ");
-            if (sc.hasNextInt()){
-                power = sc.nextInt();
-            }
-            if (power >= 0) break;
-        }
+            System.out.println("\nВведите степень числа (положительное целое число): ");
+            String strNum = br.readLine();
 
-        sc.close();
+            Pattern pattern = Pattern.compile("([0-9]+)");
+            Matcher mathch = pattern.matcher(strNum);
+
+            // Если строка содержит положительное целое число.
+            if (mathch.matches()) {
+                power = Integer.parseInt(strNum);
+            }
+
+            if (power >= 0) {
+                break;
+            } else {
+                System.out.println("Строка не является положительным целым числом. " +
+                            "\nПопробуйте снова, например 3");
+            }
+        }
 
         switch (power) {
             case 0:
@@ -56,6 +91,6 @@ public class OlegTask13 {
                 break;
         }
 
-        System.out.println("(" + base + " в степени " + power + ") = " + multi);
+        System.out.println( base + " в степени " + power + " = " + multi);
     }
 }
