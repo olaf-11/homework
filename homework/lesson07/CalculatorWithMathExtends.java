@@ -1,15 +1,18 @@
 package lesson07;
 
 public class CalculatorWithMathExtends extends CalculatorWithOperator {
-    // abs(n) -- переопределение c помощью библиотеки Math
-    public int addNums (int n){ return Math.abs(n); }
+    // Модуль числа absNum(n) переопределен c помощью библиотеки Math
+    public int absNum(int n){ return Math.abs(n); }
 
-    public long addNums(long n) { return Math.abs(n); }
+    public long absNum(long n) { return Math.abs(n); }
 
-    public float addNums(float n){ return Math.abs(n); }
+    public float absNum(float n){ return Math.abs(n); }
 
-    public double addNums(double n){ return Math.abs(n); }
+    public double absNum(double n){ return Math.abs(n); }
 
-    //sqrt(n) -- переопределение c помощью библиотеки Math
-    public double sqrtNums(double n){ return Math.sqrt(n); }
+    // Возведение числа в степень (n ^ a) переопределено c помощью библиотеки Math
+    public double powNums(double n, int a){ return Math.pow(n, a); }
+
+    // Корень квадратный sqrtNum(n) переопределен c помощью библиотеки Math
+    public double sqrtNum(double n){ return Math.sqrt(n); }
 }
