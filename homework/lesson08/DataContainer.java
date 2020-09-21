@@ -66,10 +66,6 @@ public class DataContainer<T> {
         clearData();
     }
 
-    //public DataContainer(){
-    //    data = (T[]) new Object[1];
-    //}
-
     // Mетод сохраняет переданный item и возвращает index данного элемента.
     public int add(T item){
         increaseSize();
@@ -167,19 +163,15 @@ public class DataContainer<T> {
         }
     }
 
-    /** Метод сдвигает все null вправо, а слева подряд будут не null объекты
-     *
+    /** Метод сдвигает все null вправо, а слева (без сортировки) будут не null объекты
      * @return индекс первого null-объекта. Если -1, значит в массиве нет null-объектов.
      */
     private int shiftNull() {
         int cursor;
 
         for (cursor = 0; cursor < data.length - 1; cursor++) {
-            // устанавливаем курсор на первом null
             if(data[cursor] == null){
-                // ищем первый не null
                 for(int i = cursor + 1; i < data.length; i++){
-                    // меняем местами
                     if(data[i] != null){
                         data[cursor] = data[i];
                         data[i] = null;
