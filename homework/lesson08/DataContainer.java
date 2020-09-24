@@ -1,4 +1,10 @@
 /*
+ * Олег Макиевский (группа MK-JC1-50-20)
+ * г. Минск, 2020
+ *
+ * Тема: "Работа с массивами, Работа с дженериками, Comparable, Comparator.
+ *        DataContainer".
+ *
  * 1. Создать класс DataContainer у которого есть один дженерик (обобщение).
  *    Например T.
  *
@@ -68,9 +74,12 @@ public class DataContainer<T> {
 
     // Mетод сохраняет переданный item и возвращает index данного элемента.
     public int add(T item){
-        increaseSize();
-        data[data.length - 1] = item;
-        return data.length - 1;
+        if(item != null){
+            increaseSize();
+            data[data.length - 1] = item;
+            return data.length - 1;
+        }
+        return -1;
     }
 
     // Метод получает предварительно сохранённый объект в нём (переданный в add).
@@ -120,7 +129,6 @@ public class DataContainer<T> {
      * Сортировка используется пузырьковая.
      */
     void sort(Comparator<? super T> comparator){
-        //
         if(data.length > 1) {
             for (int i = 0; i < data.length; i++) {
                 boolean isSwap = false;
@@ -145,6 +153,49 @@ public class DataContainer<T> {
         }
         str += " }\n";
         return str;
+    }
+
+    // Статические методы:
+    /* 11* В даном классе должен быть СТАТИЧЕСКИЙ метод
+     *     void sort(DataContainer<.............> container)
+     *     который будет принимать объект DataContainer с дженериком extends Comparable.
+     *     Данный метод будет сортировать элементы в ПЕРЕДАННОМ объекте DataContainer
+     *     используя реализацию сравнения вызываемый у хранимых объектов.
+     */
+
+    public static <V extends Comparable> void sort(DataContainer<V> container){
+        if(container.data.length > 1) {
+            for (int i = 0; i < container.data.length; i++) {
+                boolean isSwap = false;
+                for (int j = container.data.length - 1; j > i; j--) {
+                    if (container.data[j - 1].compareTo(container.data[j]) > 0) {
+                        isSwap = container.swapIt(container.data, j - 1, j);
+                    }
+                }
+                if (!isSwap) break; // Если не было перестановок
+            }
+        }
+    }
+
+    /* 12** В данном классе должен быть СТАТИЧЕСКИЙ метод
+     *      void sort(DataContainer<.............> container, Comparator<.......> comparator)
+     *      который будет принимать объект DataContainer и реализацию интерфейса Comparator.
+     *      Данный метод будет сортировать элементы в ПЕРЕДАННОМ объекте DataContainer
+     *      используя реализацию сравнения из ПЕРЕДАННОГО объекта интерфейса Comparator.
+     *
+     */
+    public static <V> void sort(DataContainer<V> container, Comparator<V> comparator){
+        if(container.data.length > 1) {
+            for (int i = 0; i < container.data.length; i++) {
+                boolean isSwap = false;
+                for (int j = container.data.length - 1; j > i; j--) {
+                    if (comparator.compare(container.data[j - 1], container.data[j]) > 0) {
+                        isSwap = container.swapIt(container.data, j - 1, j);
+                    }
+                }
+                if (!isSwap) break; // Если не было перестановок
+            }
+        }
     }
 
     // Дополнительные обслуживающие методы:
