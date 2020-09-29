@@ -46,80 +46,56 @@ import java.util.regex.Pattern;
 
 public class WordsCalculator {
     public static void main(String[] args) {
-        //
-        //String str = readAllBytesJava7("homework/homework/lesson09/Война и мир_книга-test1.txt");
         String str = readAllBytesJava7("homework/homework/lesson09/Война и мир_книга.txt");
         Map<String, Integer> wordsInBook = new HashMap<>();
 
         Pattern anyWord = Pattern.compile("[А-Яа-яёЁ]+-?([А-Яа-яёЁ]+)?"); // шаблон для поиска любого слова
         Matcher matchStr = anyWord.matcher(str); // передаю строку для поиска совпадений
 
-        int count = 0;
+        String[] sWord = {"война", "и", "мир"};// Для задания из п.5
 
         while (matchStr.find()) {
-            // Do something, something
-            // System.out.println(matchStr.group());
             if (!wordsInBook.containsKey(matchStr.group())){
                 wordsInBook.put(matchStr.group(), 1);
-                count++;
             } else {
                 wordsInBook.put(matchStr.group(), wordsInBook.get(matchStr.group()) + 1);
-                count++;
             }
         }
 
-        /*System.out.println();
-        for(Map.Entry<String, Integer> member : wordsInBook.entrySet()){
-            System.out.printf("%-20s\t\t%d \n", member.getKey(), member.getValue());
-        }
-        System.out.println();
-
-        System.out.println("Всего слов добавлено: " + count);
-        System.out.println();
-
-        Collection<Integer> keys = wordsInBook.values();
-        int sum = 0;
-        for (Integer val: keys) {
-            sum += val;
-        }
-        System.out.println("Всего слов подсчитанно в коллекции: " + sum);
-        System.out.println();
-        System.out.println("Всего ключей без повторов в коллекции: " + wordsInBook.size());
-        System.out.println(); */
-
-        // Поместить все значения ключей
+        // 2.1. Найти в строке все уникальные слова и поместить их в коллекцию используя Set.
         Set<String> setOfWordsInBook = wordsInBook.keySet();
-        //System.out.println("Всего уникальных слов: " + setOfWordsInBook.size());
 
-        //
+        // 2.2. Найти в строке топ 10 слов и вывести количество этих слов используя Map.
         printTop(wordsInBook,10);
 
-        //
+        // 4.1. Написать класс EasySearch...
         EasySearch eSearch = new EasySearch();
-        //String sWord = "и";
-        //long k = eSearch.search(str.toLowerCase(), sWord.toLowerCase());
-        //System.out.println("Слово \"" + sWord + "\" встречается: " + k + " раз.");
-        String[] sWord = {"война", "и", "мир"};
-        for (String w: sWord) {
-            System.out.println("Слово \"" + w + "\" встречается: " + eSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
-        }
 
+        // 5. Используя реализации интерфейса ISearchEngine...
+        for (String w: sWord) {
+            System.out.println("Слово \"" + w + "\" встречается: " +
+                               eSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
+        }
         System.out.println();
+
+        // 4.2* Написать класс RegExSearch...
         RegExSearch regSearch = new RegExSearch();
+
+        // 5. Используя реализации интерфейса ISearchEngine...
         for (String w: sWord){
-            System.out.println("Слово \"" + w + "\" встречается: " + regSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
+            System.out.println("Слово \"" + w + "\" встречается: " +
+                                regSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
         }
         System.out.println();
     }
 
+    // Метод для считывания содержимого файла и сохранения в переменную типа String.
     private static String readAllBytesJava7(String filePath)
     {
         String content = "";
 
         try {
-            //System.out.println(Paths.get(filePath).toAbsolutePath());
             content = new String (Files.readAllBytes(Paths.get(filePath)));
-
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -127,20 +103,19 @@ public class WordsCalculator {
         return content;
     }
 
+    // Метод выводит не печать топ @num значений
     private static void printTop (Map<String, Integer> someMap, int num){
-        //
         Map<String, Integer> sortedWordsMap = new LinkedHashMap<>();
         someMap.entrySet().stream()
                 .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
                 .forEachOrdered(x -> sortedWordsMap.put(x.getKey(), x.getValue()));
-        System.out.println();
+        System.out.println("\n----------------------------------------");
         int i = 1;
         for(Map.Entry<String, Integer> member : sortedWordsMap.entrySet()){
             System.out.printf("%-20s -- %5d\n", member.getKey(), member.getValue());
-            //System.out.println(member.getKey() + " -- " + member.getValue());
             i++;
             if (i > num) break;
         }
-        System.out.println();
+        System.out.println("----------------------------------------\n");
     }
 }

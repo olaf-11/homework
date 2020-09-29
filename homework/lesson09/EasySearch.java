@@ -11,20 +11,11 @@ public class EasySearch implements ISearchEngine{
 
                 // проверяю символ перед словом
                 isPrevRight = cursor - 1  < 0 || checkBorders(text.charAt(cursor - 1));
-            /*if (chPrev < 0){
-                isPrevRight = true;
-            } else {
-                isPrevRight = checkBorders(text.charAt(chPrev));
-            }*/
 
                 // проверяю символ после слова
                 isNextRight = (cursor + word.length() > text.length() - 1) || checkBorders(text.charAt(cursor + word.length()));
-            /*if (chNext > text.length() - 1){
-                isNextRight = true;
-            } else {
-                isNextRight = checkBorders(text.charAt(chNext));
-            }*/
 
+                // если слово не в составе другого слова
                 if(isPrevRight && isNextRight){
                     sum++;
                     cursor += word.length() - 1;
@@ -34,8 +25,6 @@ public class EasySearch implements ISearchEngine{
             return sum;
         }
         return -1L;
-
-
     }
     
     // Служебный метод для проверки, что слово не в составе другого слова
