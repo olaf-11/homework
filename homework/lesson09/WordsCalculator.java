@@ -66,7 +66,7 @@ public class WordsCalculator {
         Set<String> setOfWordsInBook = wordsInBook.keySet();
 
         // 2.2. Ќайти в строке топ 10 слов и вывести количество этих слов использу€ Map.
-        printTop(wordsInBook,10);
+        printTop(wordsInBook, 10);
 
         // 4.1. Ќаписать класс EasySearch...
         EasySearch eSearch = new EasySearch();
