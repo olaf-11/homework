@@ -1,14 +1,35 @@
 package homework06;
 
+import homework04.DataContainer;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Utility {
+
+    public static <T> void sort(List<T> tList, Comparator<T> tListComparator){
+        if(tList.size() > 1) {
+            for (int i = 0; i < tList.size(); i++) {
+                boolean isSwap = false;
+                for (int j = tList.size() - 1; j > i; j--) {
+                    if (tListComparator.compare(tList.get(j - 1), tList.get(j)) > 0) {
+                        isSwap = swapIt(tList, j - 1, j);
+                    }
+                }
+                if (!isSwap) break; // Если не было перестановок
+            }
+        }
+    }
+
+    private static <T> boolean swapIt (List<T> list, int i, int j) {
+        T temp = list.get(i);
+        list.set(i, list.get(j));
+        list.set(j, temp);
+        return true;
+    }
+
     public static <T> long iterateCollection(Collection<T> tColl){
         Iterator<T> iterator = tColl.iterator();
         long start = System.currentTimeMillis();

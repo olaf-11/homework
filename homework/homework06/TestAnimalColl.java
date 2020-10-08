@@ -91,6 +91,13 @@ public class TestAnimalColl {
         Collections.sort(aList, aCompar);
         // Коллекция TreeSet всегда отсортированна.
 
+        //      3.3.2.* Сортируем собственным методом сортировки (млн лет пузырьковой сортировкой...)
+        //sort(aLinkList, aCompar);
+        //sort(aArrList, aCompar);
+        //List<Person> aList = new ArrayList<>(aHashSet);
+        //sort(aList, aCompar);
+
+
         // 3.4.2. Измерить время итерирования коллекции
         //        3.4.2.1. При помощи iterator
         timeOperations[0][1] = iterateCollection(aLinkList);
@@ -164,13 +171,13 @@ public class TestAnimalColl {
     }
 
     private static Collection<Animal> generateAnimalCollection(Collection<Animal> anim){
-        String filePath = "homework/homework/lesson10/pet_niks.txt";
+        String filePath = "homework/homework/homework06/pet_niks.txt";
         if(Files.exists(Paths.get(filePath), LinkOption.NOFOLLOW_LINKS)){
             String str = readAllBytesJava7(filePath);
             String[] arrStr = str.split(", ");
             Random rnd = new Random();
 
-            for (int i = 0; i < 1_000_000; i++) {
+            for (int i = 0; i < 150_000; i++) {
                 anim.add(new Animal(arrStr[rnd.nextInt(arrStr.length)] + "_" +  i,
                                     rnd.nextInt(15) + 1));
             }

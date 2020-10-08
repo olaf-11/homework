@@ -30,6 +30,7 @@
  *         3.2.4. TreeSet
  *    3.3. Отсортировать коллекции используя компараторы из задания 2.
  *         3.3.1. Сортируем встроенными средствами jdk
+ *         3.3.2.* Сортируем собственным методом сортировки
  *    3.4. Замерить время и распечатать консоль: "Операция: ХХХХ. Заняла YYYY мс".
  *         Для замера использовать метод из jdk System.currentTimeMillis():
  *         3.4.1. Заполнения коллекции
@@ -91,6 +92,12 @@ public class TestPersonColl {
         List<Person> pList = new ArrayList<>(pHashSet);
         Collections.sort(pList, pCompar);
         // Коллекция TreeSet всегда отсортированна.
+
+        //      3.3.2.* Сортируем собственным методом сортировки (млн лет пузырьковой сортировкой...)
+        //sort(pLinkList, pCompar);
+        //sort(pArrList, pCompar);
+        //List<Person> pList = new ArrayList<>(pHashSet);
+        //sort(pList, pCompar);
 
         // 3.4.2. Измерить время итерирования коллекции
         //        3.4.2.1. При помощи iterator
@@ -165,13 +172,13 @@ public class TestPersonColl {
     }
 
     private static Collection<Person> generatePersonCollection(Collection<Person> per){
-        String filePath = "homework/homework/lesson10/names.txt";
+        String filePath = "homework/homework/homework06/names.txt";
         if(Files.exists(Paths.get(filePath), LinkOption.NOFOLLOW_LINKS)){
             String str = readAllBytesJava7(filePath);
             String[] arrStr = str.split(", ");
             Random rnd = new Random();
 
-            for (int i = 0; i < 100_000; i++) {
+            for (int i = 0; i < 150_000; i++) {
                 per.add(new Person(arrStr[rnd.nextInt(arrStr.length)] + "_" +  i, RandomPwd.nextPwd()));
             }
             return per;
