@@ -7,7 +7,7 @@
  * @rank   -- класс числа (т.е. сотни, тыс€чи, млн, млрд и т.д.).
  * @genus  -- в каком роде возвращать слова (муж., жен., ср.).
  */
-package homework04_var2;
+package homework04_2;
 
 public class NumbersGroup {
     public static final String[][] TWO = {{"", "один", "два"},

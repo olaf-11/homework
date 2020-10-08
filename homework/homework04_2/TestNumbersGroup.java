@@ -15,7 +15,7 @@
  *    3.3 Пример передали: 14. Получили "2 недели"
  *    3.4 Пример передали: 177. Получили "25 недель"
  */
-package homework04_var2;
+package homework04_2;
 
 public class TestNumbersGroup {
     public static void main(String[] args) {
