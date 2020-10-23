@@ -172,7 +172,7 @@ public class TestPersonColl {
     }
 
     private static Collection<Person> generatePersonCollection(Collection<Person> per){
-        String filePath = "homework/homework/homework06/names.txt";
+        String filePath = "src/homework/homework06/names.txt";
         if(Files.exists(Paths.get(filePath), LinkOption.NOFOLLOW_LINKS)){
             String str = readAllBytesJava7(filePath);
             String[] arrStr = str.split(", ");

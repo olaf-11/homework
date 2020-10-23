@@ -9,13 +9,13 @@ public class EasySearch implements ISearchEngine{
             boolean isPrevRight, isNextRight;
             while ((cursor = text.indexOf(word, cursor + 1)) >= 0) {
 
-                // проверяю символ перед словом
+                // РїСЂРѕРІРµСЂСЏСЋ СЃРёРјРІРѕР» РїРµСЂРµРґ СЃР»РѕРІРѕРј
                 isPrevRight = cursor - 1  < 0 || checkBorders(text.charAt(cursor - 1));
 
-                // проверяю символ после слова
+                // РїСЂРѕРІРµСЂСЏСЋ СЃРёРјРІРѕР» РїРѕСЃР»Рµ СЃР»РѕРІР°
                 isNextRight = (cursor + word.length() > text.length() - 1) || checkBorders(text.charAt(cursor + word.length()));
 
-                // если слово не в составе другого слова
+                // РµСЃР»Рё СЃР»РѕРІРѕ РЅРµ РІ СЃРѕСЃС‚Р°РІРµ РґСЂСѓРіРѕРіРѕ СЃР»РѕРІР°
                 if(isPrevRight && isNextRight){
                     sum++;
                     cursor += word.length() - 1;
@@ -27,9 +27,9 @@ public class EasySearch implements ISearchEngine{
         return -1L;
     }
     
-    // Служебный метод для проверки, что слово не в составе другого слова
+    // РЎР»СѓР¶РµР±РЅС‹Р№ РјРµС‚РѕРґ РґР»СЏ РїСЂРѕРІРµСЂРєРё, С‡С‚Рѕ СЃР»РѕРІРѕ РЅРµ РІ СЃРѕСЃС‚Р°РІРµ РґСЂСѓРіРѕРіРѕ СЃР»РѕРІР°
     private boolean checkBorders (char ch){
-        // Если символ не принадлежит буквенному диапазону или не "Ё", и не дефис "-"
-        return !(ch > 'А' && ch < 'я') && !(ch == 'ё' || ch == 'Ё' || ch == '-');
+        // Р•СЃР»Рё СЃРёРјРІРѕР» РЅРµ РїСЂРёРЅР°РґР»РµР¶РёС‚ Р±СѓРєРІРµРЅРЅРѕРјСѓ РґРёР°РїР°Р·РѕРЅСѓ РёР»Рё РЅРµ "РЃ", Рё РЅРµ РґРµС„РёСЃ "-"
+        return !(ch > 'Рђ' && ch < 'СЏ') && !(ch == 'С‘' || ch == 'РЃ' || ch == '-');
     }
 }

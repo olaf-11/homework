@@ -74,7 +74,7 @@ public class WordsCalculator {
         // 5. Используя реализации интерфейса ISearchEngine...
         for (String w: sWord) {
             System.out.println("Слово \"" + w + "\" встречается: " +
-                               eSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
+                    eSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
         }
         System.out.println();
 
@@ -84,7 +84,7 @@ public class WordsCalculator {
         // 5. Используя реализации интерфейса ISearchEngine...
         for (String w: sWord){
             System.out.println("Слово \"" + w + "\" встречается: " +
-                                regSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
+                    regSearch.search(str.toLowerCase(), w.toLowerCase()) + " раз.");
         }
         System.out.println();
     }

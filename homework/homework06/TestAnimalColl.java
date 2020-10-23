@@ -171,7 +171,7 @@ public class TestAnimalColl {
     }
 
     private static Collection<Animal> generateAnimalCollection(Collection<Animal> anim){
-        String filePath = "homework/homework/homework06/pet_niks.txt";
+        String filePath = "src/homework/homework06/pet_niks.txt";
         if(Files.exists(Paths.get(filePath), LinkOption.NOFOLLOW_LINKS)){
             String str = readAllBytesJava7(filePath);
             String[] arrStr = str.split(", ");

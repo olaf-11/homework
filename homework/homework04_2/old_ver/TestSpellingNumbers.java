@@ -14,7 +14,7 @@ public class TestSpellingNumbers {
 
         // int day = 277;
         //for (int i = 0; i < 367; i += 7) {
-        //    System.out.println("Äíåé c íà÷àëà ãîäà: " + i + " -- ýòî " + sn.toWeek(i));
+        //    System.out.println("Ð”Ð½ÐµÐ¹ c Ð½Ð°Ñ‡Ð°Ð»Ð° Ð³Ð¾Ð´Ð°: " + i + " -- ÑÑ‚Ð¾ " + sn.toWeek(i));
         //}
         System.out.println();
     }
