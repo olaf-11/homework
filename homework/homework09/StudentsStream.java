@@ -39,10 +39,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class StudentsStream {
-    public static final String DEFAULT_PATH = "homework/homework/homework09/students.bin";
-    public static final String PATH_TXT = "homework/homework/homework09/students.txt";
-    public static final String DEFAULT_PATH_TOP = "homework/homework/homework09/studentsTop.bin";
-    //public static final StudentComparator stCompr = new StudentComparator();
+    public static final String DEFAULT_PATH = "src/homework/homework09/students.bin";
+    public static final String PATH_TXT = "src/homework/homework09/students.txt";
+    public static final String DEFAULT_PATH_TOP = "src/homework/homework09/studentsTop.bin";
+
+    //public static final String DEFAULT_PATH = "homework/homework/homework09/students.bin";
+    //public static final String PATH_TXT = "homework/homework/homework09/students.txt";
+    //public static final String DEFAULT_PATH_TOP = "homework/homework/homework09/studentsTop.bin";
+
+    public static final StudentComparator stCompr = new StudentComparator();
     public static final long topN = 100;
 
     public static void main(String[] args) {

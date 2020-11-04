@@ -17,8 +17,8 @@ public class StudentsListGen {
 
     public static List<Student> create(){
         List<Student> list = new ArrayList<>();
-        //String filePath = "src/homework/homework06/names.txt";
-        String filePath = "homework/homework/homework06/names.txt";
+        String filePath = "src/homework/homework06/names.txt";
+        //String filePath = "homework/homework/homework06/names.txt";
 
         if(Files.exists(Paths.get(filePath), LinkOption.NOFOLLOW_LINKS)) {
             String str = readAllBytesJava7(filePath);
